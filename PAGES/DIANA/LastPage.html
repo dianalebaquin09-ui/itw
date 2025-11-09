@@ -1,0 +1,85 @@
+<!DOCTYPE html>
+<html lang="en">
+
+  <head>
+    <meta charset="UTF-8">
+    <title>CARD</title>
+    <link rel="stylesheet" href="design.css">
+
+  </head>
+    
+  <body>
+
+  <a href="../../index.html" class="back-button">Back to Main</a>
+    <a href="CollegePresent.html" class="previous-button">Back to Previous Page</a>
+
+
+    <div class="slider-container">
+      <button class="nav-btn prev-btn">&#8592;</button>
+      
+      <div class="cards-wrapper">
+        <div class="container">
+          <div class="card-image">
+            <img src="../DIANA/1.jpg" alt="Landscape 1">
+          </div>
+          <div class="card-overlay">
+            <h2>Beautiful Sunset</h2>
+          </div>
+        </div>
+
+        <div class="container">
+          <div class="card-image">
+            <img src="../DIANA/2.jpg" alt="Landscape 2">
+          </div>
+          <div class="card-overlay">
+            <h2>Mountain Vista</h2>
+          </div>
+        </div>
+
+        <div class="container">
+          <div class="card-image">
+            <img src="../DIANA/3.jpg" alt="Landscape 3">
+          </div>
+          <div class="card-overlay">
+            <h2>Ocean View</h2>
+          </div>
+        </div>
+      </div>
+
+      <button class="nav-btn next-btn">&#8594;</button>
+    </div>
+
+    <script>
+      document.addEventListener('DOMContentLoaded', function() {
+        const wrapper = document.querySelector('.cards-wrapper');
+        const containers = document.querySelectorAll('.container');
+        const prevBtn = document.querySelector('.prev-btn');
+        const nextBtn = document.querySelector('.next-btn');
+        let currentIndex = 0;
+
+        // Hide all containers except the first one
+        containers.forEach((container, index) => {
+          if (index !== 0) {
+            container.style.display = 'none';
+          }
+        });
+
+        function showCard(index) {
+          containers.forEach(container => container.style.display = 'none');
+          containers[index].style.display = 'block';
+        }
+
+        prevBtn.addEventListener('click', () => {
+          currentIndex = (currentIndex - 1 + containers.length) % containers.length;
+          showCard(currentIndex);
+        });
+
+        nextBtn.addEventListener('click', () => {
+          currentIndex = (currentIndex + 1) % containers.length;
+          showCard(currentIndex);
+        });
+      });
+    </script>
+  </body>
+  
+</html>

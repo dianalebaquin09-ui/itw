@@ -1,0 +1,57 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="utf-8" />
+  <meta name="viewport" content="width=device-width,initial-scale=1" />
+  <title>Hersy — Life Journey</title>
+  <style>
+    body{margin:0;font-family:Arial,Helvetica,sans-serif;background:transparent;color:#222;text-align:center}
+    .wrap{padding:20px;max-width:900px;margin:0 auto}
+    h1{color:brown}
+    img{max-width:100%;border-radius:12px}
+    .nav{display:flex;gap:8px;justify-content:flex-end;margin-top:14px}
+    .btn{background:#2e8b57;color:white;padding:8px 14px;border-radius:8px;border:none;cursor:pointer}
+    .section{display:none}
+    .section.active{display:block}
+  </style>
+</head>
+<body>
+  <div class="wrap">    
+    <h1>Hersy — My Life</h1>
+    <a href="../../index.html" class="btn" id="backM">Back to Main</a>
+    <div id="baby" class="section active">
+      <h2>Baby</h2>
+      <p>When I was a baby, I'm such a stubborn child that's why my mom's always beat me HAHAHA.</p>
+      <img src="/assets/images/hersy-bata.jpg" alt="baby">
+    </div>
+
+    <div id="school" class="section">
+      <h2>School Life</h2>
+      <p>In Elementary journey I didn't really have many beautiful memories... my COF (circle of friends) brings light in my darkest days.</p>
+      <img src="/assets/images/elementarydays.jpg" alt="elementary">
+      <img src="/assets/images/highschool.jpg" alt="elementary">
+    </div>
+
+    <div id="college" class="section">
+      <h2>College Life</h2>
+      <p>College life is where I learned how to grow individually as a college student, and I also learned many things in life as an adult.</p>
+      <img src="/assets/images/collegesports.jpg" alt="college">
+      <img src="/assets/images/collegeptc.jpg" alt="college">
+    </div>
+
+    <div class="nav">
+      <button class="btn" id="prevH">Back</button>
+      <button class="btn" id="nextH">Next</button>
+    </div>
+  </div>
+
+<script>
+  const s = ['baby','school','college'];
+  let i = 0;
+  function render(){ s.forEach((k,idx)=> document.getElementById(k).classList.toggle('active', idx===i)); document.getElementById('prevH').style.visibility = i===0 ? 'hidden':'visible'; document.getElementById('nextH').textContent = i===s.length-1 ? 'Finish' : 'Next'; }
+  document.getElementById('prevH').onclick = ()=>{ if(i>0) i--; render(); }
+  document.getElementById('nextH').onclick = ()=>{ if(i<s.length-1) i++; else {/* finish */} render(); }
+  render();
+</script>
+</body>
+</html>

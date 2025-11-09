@@ -1,0 +1,55 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+<meta charset="utf-8" /><meta name="viewport" content="width=device-width,initial-scale=1" />
+<title>Edcel’s Journey</title>
+<style>
+ body{font-family:Arial;margin:20px}
+ .timeline-item{margin-bottom:30px;padding:15px;border:1px solid #ddd}
+ .timeline-image{max-width:300px;height:200px;margin-bottom:10px}
+ .nav-button{padding:10px 20px;margin:0 10px;background:#667eea;color:#fff;border:none;border-radius:4px}
+</style>
+</head>
+<body>
+  <h1>Edcel’s Journey</h1>
+  <button class="nav-button" onclick="window.location.href='../../index.html'">Back to Main</button>
+  <hr>
+  <p>A timeline of memories and growth</p>
+
+  <div id="page1" class="page">
+    <div class="timeline-item"><div class="timeline-year">Grade 7</div>
+    <img src="/assets/images/7.jpg" class="timeline-image"><p>Got my first phone.</p></div>
+  </div>
+
+  <div id="page2" class="page" style="display:none">
+    <div class="timeline-item"><div class="timeline-year">Acquaintance Party</div>
+    <img src="/assets/images/a5.jpg" class="timeline-image"><p>Visited all booth.</p></div>
+  </div>
+
+  <div id="page3" class="page" style="display:none">
+    <div class="timeline-item"><div class="timeline-year">Quality Analyst of the Year</div>
+    <img src="/assets/images/a.jpg" class="timeline-image"><p>Awarded as one of the Best QA of the year.</p></div>
+  </div>
+
+  <div class="navigation">
+    <button id="prevBtn" class="nav-button" onclick="changePage(-1)" disabled>Previous</button>
+    <span id="pageIndicator">Page 1 of 3</span>
+    <button id="nextBtn" class="nav-button" onclick="changePage(1)">Next</button>
+  </div>
+
+<script>
+let currentPage=1;const totalPages=3;
+function changePage(direction){
+  document.getElementById('page'+currentPage).style.display='none';
+  currentPage+=direction;
+  document.getElementById('page'+currentPage).style.display='block';
+  updateNavigation();
+}
+function updateNavigation(){
+  document.getElementById('pageIndicator').textContent=`Page ${currentPage} of ${totalPages}`;
+  document.getElementById('prevBtn').disabled = currentPage===1;
+  document.getElementById('nextBtn').disabled = currentPage===totalPages;
+}
+</script>
+</body>
+</html>

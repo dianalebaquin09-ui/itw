@@ -1,0 +1,58 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+<meta charset="utf-8" /><meta name="viewport" content="width=device-width,initial-scale=1" />
+<title>Cairo — My Life Journey</title>
+<style>
+ *{box-sizing:border-box;margin:0;padding:0;font-family:Arial}
+ body{background:#f5f5f5;color:#333}
+ .container{max-width:800px;margin:20px auto;padding:20px}
+ header{background:#4a6fa5;color:white;padding:20px;text-align:center}
+ .page{display:none;background:white;padding:20px;margin-bottom:20px}
+ .page.active{display:block}
+ .photos{display:flex;flex-wrap:wrap;gap:20px;justify-content:center}
+ .photo img{width:200px;height:200px;object-fit:cover;border:3px solid #4a6fa5}
+ .nav{display:flex;justify-content:space-between;margin-top:20px}
+ .nav button{padding:10px 20px;background:#4a6fa5;color:white;border:none;border-radius:6px}
+</style>
+</head>
+<body>
+<div class="container">
+  <button class="nav-button" onclick="window.location.href='../../index.html'">Back to Main</button>
+  <hr>
+  <header><h1>My Life Journey</h1></header>
+
+  <div id="page1" class="page active">
+    <h2>Early Years</h2>
+    <div class="photos">
+      <div class="photo"><img src="/assets/images/cairo-baby.jpg" alt="baby"><p>Baby</p></div>
+      <div class="photo"><img src="/assets/images/Elementary pic.jpg" alt="elementary"><p>Elementary</p></div>
+    </div>
+    <div class="nav"><button disabled>Previous</button><button onclick="showPage(2)">Next</button></div>
+    <div class="page-indicator">Page 1 of 3</div>
+  </div>
+
+  <div id="page2" class="page">
+    <h2>Teenage Years</h2>
+    <div class="photos"><div class="photo"><img src="/assets/images/High School pic.jpg" alt=""><p>High School</p></div></div>
+    <div class="nav"><button onclick="showPage(1)">Previous</button><button onclick="showPage(3)">Next</button></div>
+    <div class="page-indicator">Page 2 of 3</div>
+  </div>
+
+  <div id="page3" class="page">
+    <h2>College</h2>
+    <div class="photos"><div class="photo"><img src="/assets/images/College pic.jpg" alt=""><p>College</p></div></div>
+    <div class="nav"><button onclick="showPage(2)">Previous</button><button disabled>Next</button></div>
+    <div class="page-indicator">Page 3 of 3</div>
+  </div>
+
+</div>
+
+<script>
+function showPage(n){
+  document.querySelectorAll('.page').forEach(p=>p.classList.remove('active'));
+  document.getElementById('page'+n).classList.add('active');
+}
+</script>
+</body>
+</html>

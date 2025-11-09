@@ -1,0 +1,444 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Group 3 - Life Journey</title>
+    <!-- Load Tailwind CSS -->
+    <script src="https://cdn.tailwindcss.com"></script>
+    <!-- Load Inter font -->
+    <link rel="preconnect" href="https://fonts.googleapis.com">
+    <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+    <link href="https://fonts.googleapis.com/css2?family=Inter:wght@400;500;600;700&display=swap" rel="stylesheet">
+    <style>
+        /* Custom styles from the screenshot */
+        body {
+            font-family: 'Inter', sans-serif;
+            background-color: #fffbff; /* Main background */
+        }
+        .sidebar {
+            background-color: #fdf2f8; /* Light pink sidebar */
+        }
+        .top-bar {
+            background-color: #3e5347; /* Dark green top bar */
+        }
+        .footer {
+            background-color: #3e5347; /* Dark green footer */
+            color: #f0f0f0;
+        }
+        .sidebar-item {
+            background-color: #ffffff;
+            border: 1px solid #e2e8f0;
+            border-radius: 0.5rem;
+            padding: 0.75rem 1.5rem;
+            margin-bottom: 0.75rem;
+            font-weight: 500;
+            color: #334155;
+            transition: all 0.2s;
+            display: flex;
+            align-items: center;
+            cursor: pointer; /* Added cursor pointer */
+        }
+        .sidebar-item:hover, .sidebar-item.active {
+            background-color: #f8fafc;
+            border-color: #cbd5e1;
+            box-shadow: 0 1px 3px 0 rgb(0 0 0 / 0.1), 0 1px 2px -1px rgb(0 0 0 / 0.1);
+        }
+        .sidebar-icon {
+            display: inline-flex;
+            align-items: center;
+            justify-content: center;
+            width: 2rem;
+            height: 2rem;
+            border-radius: 9999px;
+            background-color: #64748b;
+            color: #ffffff;
+            font-weight: 600;
+            margin-right: 1rem;
+        }
+        .pink-flower {
+            color: #ec4899; /* Pink color for flower */
+            font-size: 1.5rem;
+            margin: 0 0.5rem;
+        }
+
+        /* Styles for the new preview card */
+        .preview-card {
+            position: relative;
+            overflow: hidden; /* Clips the video */
+            height: 100%;
+            width: 100%;
+            border-radius: 0.5rem; 
+        }
+        .preview-video {
+            position: absolute;
+            top: 50%;
+            left: 50%;
+            min-width: 100%;
+            min-height: 100%;
+            width: auto;
+            height: auto;
+            transform: translate(-50%, -50%);
+            z-index: 0;
+            filter: blur(3px) brightness(0.7); /* Effect for video */
+        }
+        .preview-content {
+            position: relative;
+            z-index: 10;
+            height: 100%;
+            display: flex;
+            flex-direction: column;
+            align-items: center;
+            justify-content: center;
+            padding: 2rem;
+            color: white;
+            text-shadow: 0 2px 4px rgba(0,0,0,0.5);
+        }
+    </style>
+</head>
+<body class="flex flex-col min-h-screen">
+
+    <!-- Top Bar -->
+    <div class="top-bar p-3 text-white">
+        <p class="text-sm">Group 3 | Life Journey</p>
+    </div>
+
+    <!-- Main Content Area -->
+    <div class="flex flex-1 flex-col md:flex-row">
+        
+        <!-- Sidebar -->
+        <aside class="w-full md:w-64 lg:w-80 sidebar p-6">
+            <h2 class="text-2xl font-bold mb-6 flex items-center">
+                <span class="pink-flower">🌸</span> Group 3
+            </h2>
+            <nav>
+                <a class="sidebar-item sidebar-link" data-target="preview-diana">
+                    <span class="sidebar-icon" style="background-color: #7c3aed;">D</span>
+                    <span>Diana</span>
+                </a>
+                
+                <a class="sidebar-item sidebar-link" data-target="preview-lanz">
+                    <span class="sidebar-icon" style="background-color: #c026d3;">L</span>
+                    <span>Lanz</span>
+                </a>
+                <a class="sidebar-item sidebar-link" data-target="preview-hersy">
+                    <span class="sidebar-icon" style="background-color: #db2777;">H</span>
+                    <span>Hersy</span>
+                </a>
+                <a class="sidebar-item sidebar-link" data-target="preview-regine">
+                    <span class="sidebar-icon" style="background-color: #e11d48;">R</span>
+                    <span>Regine</span>
+                </a>
+                <a class="sidebar-item sidebar-link" data-target="preview-shie">
+                    <span class="sidebar-icon" style="background-color: #ea580c;">S</span>
+                    <span>Shie</span>
+                </a>
+                <a class="sidebar-item sidebar-link" data-target="preview-edcel">
+                    <span class="sidebar-icon" style="background-color: #ca8a04;">E</span>
+                    <span>Edcel</span>
+                </a>
+                <a class="sidebar-item sidebar-link" data-target="preview-marcus">
+                    <span class="sidebar-icon" style="background-color: #65a30d;">M</span>
+                    <span>Marcus</span>
+                </a>
+                <a class="sidebar-item sidebar-link" data-target="preview-cairo">
+                    <span class="sidebar-icon" style="background-color: #059669;">C</span>
+                    <span>Cairo</span>
+                </a>
+                <a class="sidebar-item sidebar-link" data-target="preview-shannel">
+                    <span class="sidebar-icon" style="background-color: #0891b2;">S</span>
+                    <span>Shannel</span>
+                </a>
+                <a class="sidebar-item sidebar-link" data-target="preview-brian">
+                    <span class="sidebar-icon" style="background-color: #db1769;">S</span>
+                    <span>Rubrobb</span>
+                </a>
+                <a class="sidebar-item sidebar-link" data-target="preview-ceejay">
+                    <span class="sidebar-icon" style="background-color: #8e898b;">S</span>
+                    <span>Ceejay</span>
+                </a>
+            </nav>
+        </aside>
+
+        <!-- Main Content -->
+        <main class="flex-1 p-10 md:p-16">
+            
+            <!-- Default Message (Will be hidden by JS) -->
+            <div id="default-message" class="flex items-center justify-center h-full">
+                <h1 class="text-3xl font-semibold text-gray-700 text-center">
+                    Select a member to view their Life Journey
+                    <span class="pink-flower">🌸</span>
+                </h1>
+            </div>
+
+            <!-- DIANA -->
+            <div id="preview-diana" class="preview-card hidden" style="background-color: transparent;">
+                <video class="preview-video" autoplay loop muted playsinline>
+                    <source src="ASSETS/VIDEOS/DIANA.mp4" type="video/mp4">
+                    Your browser does not support the video tag.
+                </video>
+                
+                <div class="preview-content">
+                    <img 
+                        src="PAGES/DIANA/c me 3.jpg" 
+                        alt="Diana's Profile Picture" 
+                        class="rounded-full w-36 h-36 md:w-48 md:h-48 border-4 border-white shadow-lg mb-6">
+                    <h2 class="text-4xl font-bold mb-8">Diana</h2>
+                    
+                    <a href="PAGES/DIANA/EarlyLife.html" 
+                       class="py-3 px-8 bg-violet-600 text-white font-semibold rounded-lg shadow-md hover:bg-violet-700 transition-all text-lg">
+                        View Life Journey
+                    </a>
+                </div>
+            </div>
+
+            <!-- LANZ -->
+            <div id="preview-lanz" class="preview-card hidden" style="background-color: transparent                                                                                                                                                                                                 ;">
+                <video class="preview-video" autoplay loop muted playsinline>
+                    <source src="assets/videos/LANZ.MOV" type="video/mp4">
+                </video>
+
+                <div class="preview-content">
+                    <img 
+                        src="/assets/images/lanzbaby.jpg" 
+                        alt="Lanz's Profile Picture" 
+                        class="rounded-full w-36 h-36 md:w-48 md:h-48 border-4 border-white shadow-lg mb-6">
+                    <h2 class="text-4xl font-bold mb-8">Lanz</h2>
+
+                    <a href="PAGES/LANZ/baby.html" class="py-3 px-8 bg-fuchsia-600 text-white font-semibold rounded-lg shadow-md hover:bg-fuchsia-700 transition-all text-lg">
+                        View Life Journey
+                    </a>
+                </div>
+            </div>
+            
+            <!-- HERSY -->
+            <div id="preview-hersy" class="preview-card hidden" style="background-color: transparent;">
+                <video class="preview-video" autoplay loop muted playsinline>
+                    <source src="ASSETS/VIDEOS/HERSY.mp4" type="video/mp4">
+                    Your browser does not support the video tag.
+                </video>
+                
+                <div class="preview-content">
+                    <img 
+                        src="ASSETS/IMAGES/hersy-bata.jpg" 
+                        alt="Hersy's Profile Picture" 
+                        class="rounded-full w-36 h-36 md:w-48 md:h-48 border-4 border-white shadow-lg mb-6">
+                    <h2 class="text-4xl font-bold mb-8">Hersy</h2>
+                    
+                    <a href="PAGES/HERSY/hersy.html" 
+                       class="py-3 px-8 bg-violet-600 text-white font-semibold rounded-lg shadow-md hover:bg-violet-700 transition-all text-lg">
+                        View Life Journey
+                    </a>
+                </div>
+            </div>
+            
+            <!-- REGINE -->
+            <div id="preview-regine" class="preview-card hidden" style="background-color: transparent;">
+                <video class="preview-video" autoplay loop muted playsinline>
+                    <source src="PAGES/REGINE/REGINE.mp4" type="video/mp4">
+                    Your browser does not support the video tag.
+                </video>
+                
+                <div class="preview-content">
+                    <img 
+                        src="PAGES/REGINE/cine fighting duks.jpg" 
+                        alt="Diana's Profile Picture" 
+                        class="rounded-full w-36 h-36 md:w-48 md:h-48 border-4 border-white shadow-lg mb-6">
+                    <h2 class="text-4xl font-bold mb-8">Regine</h2>
+                    
+                    <a href="PAGES/REGINE/regine.html" 
+                       class="py-3 px-8 bg-violet-600 text-white font-semibold rounded-lg shadow-md hover:bg-violet-700 transition-all text-lg">
+                        View Life Journey
+                    </a>
+                </div>
+            </div>
+
+            <!-- SHIE -->
+            <div id="preview-shie" class="preview-card hidden" style="background-color: transparent;">
+                <video class="preview-video" autoplay loop muted playsinline>
+                    <source src="ASSETS/VIDEOS/SHIELA.mp4" type="video/mp4">
+                    Your browser does not support the video tag.
+                </video>
+                
+                <div class="preview-content">
+                    <img 
+                        src="ASSETS/IMAGES/hs.jpeg" 
+                        alt="Diana's Profile Picture" 
+                        class="rounded-full w-36 h-36 md:w-48 md:h-48 border-4 border-white shadow-lg mb-6">
+                    <h2 class="text-4xl font-bold mb-8">Shie</h2>
+                    
+                    <a href="PAGES/SHIE/shie.html" 
+                       class="py-3 px-8 bg-violet-600 text-white font-semibold rounded-lg shadow-md hover:bg-violet-700 transition-all text-lg">
+                        View Life Journey
+                    </a>
+                </div>
+            </div>
+
+            <!-- EDCEL -->
+           <div id="preview-edcel" class="preview-card hidden" style="background-color: transparent;">
+                <video class="preview-video" autoplay loop muted playsinline>
+                    <source src="ASSETS/VIDEOS/EDCEL.mp4" type="video/mp4">
+                    Your browser does not support the video tag.
+                </video>
+                
+                <div class="preview-content">
+                    <img 
+                        src="/assets/images/a.jpg" 
+                        alt="Diana's Profile Picture" 
+                        class="rounded-full w-36 h-36 md:w-48 md:h-48 border-4 border-white shadow-lg mb-6">
+                    <h2 class="text-4xl font-bold mb-8">Edcel</h2>
+                    
+                    <a href="PAGES/EDCEL/edcel.html" 
+                       class="py-3 px-8 bg-violet-600 text-white font-semibold rounded-lg shadow-md hover:bg-violet-700 transition-all text-lg">
+                        View Life Journey
+                    </a>
+                </div>
+            </div>
+
+            <!-- MARCUS -->
+           <div id="preview-marcus" class="preview-card hidden" style="background-color: transparent;">
+                <video class="preview-video" autoplay loop muted playsinline>
+                    <source src="ASSETS/VIDEOS/MARCUS.MOV" type="video/mp4">
+                    Your browser does not support the video tag.
+                </video>
+                
+                <div class="preview-content">
+                    <img 
+                        src="ASSETS/IMAGES/hospital.jpg" 
+                        alt="Diana's Profile Picture" 
+                        class="rounded-full w-36 h-36 md:w-48 md:h-48 border-4 border-white shadow-lg mb-6">
+                    <h2 class="text-4xl font-bold mb-8">Marcus</h2>
+                    
+                    <a href="PAGES/MARCUS/marcus.html" 
+                       class="py-3 px-8 bg-violet-600 text-white font-semibold rounded-lg shadow-md hover:bg-violet-700 transition-all text-lg">
+                        View Life Journey
+                    </a>
+                </div>
+            </div>
+
+            <!-- CAIRO -->
+           <div id="preview-cairo" class="preview-card hidden" style="background-color: transparent;">
+                <video class="preview-video" autoplay loop muted playsinline>
+                    <source src="ASSETS/VIDEOS/CAIRO.MOV" type="video/mp4">
+                    Your browser does not support the video tag.
+                </video>
+                
+                <div class="preview-content">
+                    <img 
+                        src="ASSETS/IMAGES/collegeptc.jpg" 
+                        alt="Diana's Profile Picture" 
+                        class="rounded-full w-36 h-36 md:w-48 md:h-48 border-4 border-white shadow-lg mb-6">
+                    <h2 class="text-4xl font-bold mb-8">Cairo</h2>
+                    
+                    <a href="PAGES/CAIRO/cairo.html" 
+                       class="py-3 px-8 bg-violet-600 text-white font-semibold rounded-lg shadow-md hover:bg-violet-700 transition-all text-lg">
+                        View Life Journey
+                    </a>
+                </div>
+            </div>
+
+            <!-- SHANNEL -->
+           <div id="preview-shannel" class="preview-card hidden" style="background-color: transparent;">
+                <video class="preview-video" autoplay loop muted playsinline>
+                    <source src="assets/videos/SHANNEL.mp4" type="video/mp4">
+                    Your browser does not support the video tag.
+                </video>
+                
+                <div class="preview-content">
+                    <img 
+                        src="ASSETS/IMAGES/baby.jpg" 
+                        alt="Diana's Profile Picture" 
+                        class="rounded-full w-36 h-36 md:w-48 md:h-48 border-4 border-white shadow-lg mb-6">
+                    <h2 class="text-4xl font-bold mb-8">Shannel</h2>
+                    
+                    <a href="PAGES/SHANNEL/shannel.html" 
+                       class="py-3 px-8 bg-violet-600 text-white font-semibold rounded-lg shadow-md hover:bg-violet-700 transition-all text-lg">
+                        View Life Journey
+                    </a>
+                </div>
+            </div>
+
+            <!-- BRIA -->
+           <div id="preview-brian" class="preview-card hidden" style="background-color: transparent;">
+                <video class="preview-video" autoplay loop muted playsinline>
+                    <source src="ASSETS/VIDEOS/BRIAN.mp4" type="video/mp4">
+                    Your browser does not support the video tag.
+                </video>
+                
+                <div class="preview-content">
+                    <img 
+                        src="ASSETS/IMAGES/meow.jpg" 
+                        alt="Diana's Profile Picture" 
+                        class="rounded-full w-36 h-36 md:w-48 md:h-48 border-4 border-white shadow-lg mb-6">
+                    <h2 class="text-4xl font-bold mb-8">Rubrobb</h2>
+                    
+                    <a href="PAGES/BRIAN/brian.html" 
+                       class="py-3 px-8 bg-violet-600 text-white font-semibold rounded-lg shadow-md hover:bg-violet-700 transition-all text-lg">
+                        View Life Journey
+                    </a>
+                </div>
+            </div>
+
+            <!-- CJ -->
+           <div id="preview-ceejay" class="preview-card hidden" style="background-color: transparent;">
+                <video class="preview-video" autoplay loop muted playsinline>
+                    <source src="ASSETS/VIDEOS/CEEJAY.MOV" type="video/mp4">
+                    Your browser does not support the video tag.
+                </video>
+                
+                <div class="preview-content">
+                    <img 
+                        src="ASSETS/IMAGES/Ceejay.jpeg" 
+                        alt="Diana's Profile Picture" 
+                        class="rounded-full w-36 h-36 md:w-48 md:h-48 border-4 border-white shadow-lg mb-6">
+                    <h2 class="text-4xl font-bold mb-8">Ceejay</h2>
+                    
+                    <a href="PAGES/CEEJAY/ceejay.html" 
+                       class="py-3 px-8 bg-violet-600 text-white font-semibold rounded-lg shadow-md hover:bg-violet-700 transition-all text-lg">
+                        View Life Journey
+                    </a>
+                </div>
+            </div>
+
+        </main>
+    </div>
+
+    <footer class="footer text-center p-4 text-sm">
+        © Group 3 | Life Journey 2025 💖
+    </footer>
+
+    <script>
+        document.addEventListener('DOMContentLoaded', () => {
+            const links = document.querySelectorAll('.sidebar-link');
+            const previews = document.querySelectorAll('.preview-card');
+            const defaultMessage = document.getElementById('default-message');
+
+            links.forEach(link => {
+                link.addEventListener('click', (event) => {
+                    event.preventDefault(); // Stop link from navigating
+                    
+                    const targetId = link.dataset.target;
+                    const targetPreview = document.getElementById(targetId);
+
+                    // Remove 'active' class from all links
+                    links.forEach(l => l.classList.remove('active'));
+                    // Add 'active' class to clicked link
+                    link.classList.add('active');
+
+                    // Hide all previews and default message
+                    previews.forEach(p => p.classList.add('hidden'));
+                    if (defaultMessage) {
+                        defaultMessage.classList.add('hidden');
+                    }
+
+                    // Show the target preview
+                    if (targetPreview) {
+                        targetPreview.classList.remove('hidden');
+                    }
+                });
+            });
+        });
+    </script>
+
+</body>
+</html>

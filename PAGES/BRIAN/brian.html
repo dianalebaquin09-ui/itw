@@ -1,0 +1,52 @@
+<!doctype html>
+<html lang="en">
+<head>
+  <meta charset="utf-8" /><meta name="viewport" content="width=device-width,initial-scale=1" />
+  <title>Brian — My Life Journey</title>
+  <link rel="stylesheet" href="style.css"/>
+</head>
+<body>
+  <h1>My Life Journey</h1>
+  <button class="nav-button" onclick="window.location.href='../../index.html'">Back to Main</button>
+  <hr>
+  <h3>Hello, I'm Rubrobb Ondoy and here are my happy and simple journeys.</h3>
+
+  <div class="section">
+    <h2>Childhood Pictures</h2>
+    <p>So here are my childhood pictures...</p>
+
+    <button onclick="toggle('childhood')">See Childhood Photos</button>
+
+    <div class="photos" id="childhood">
+      <img src="/assets/images/meow.jpg">
+      <img src="/assets/images/childhood2.jpg">
+    </div>
+  </div>
+
+  <div class="section">
+    <h2>Highschool Experiences</h2>
+    <p>...highschool!</p>
+    <button onclick="toggle('highschool')">See HighSchool Photos</button>
+    <div class="photos" id="highschool">
+      <img src="/assets/images/123.jpg">
+      <img src="/assets/images/highschoolpic2.jpg"></div>
+  </div>
+
+  <div class="section">
+    <h2>College Journey</h2>
+    <p>...college.</p>
+    <button onclick="toggle('college')">See College Photos</button>
+    <div class="photos" id="college">
+      <img src="/assets/images/collegepic1.jpg">
+      <img src="/assets/images/collegepic2.jpg"></div>
+  </div>
+
+<script>
+  function toggle(id){
+    document.querySelectorAll('#'+id+' img').forEach(img=>{
+      img.style.display = (img.style.display==='none' || img.style.display==='') ? 'inline-block' : 'none';
+    });
+  }
+</script>
+</body>
+</html>

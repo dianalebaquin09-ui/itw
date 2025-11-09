@@ -1,0 +1,233 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+<meta charset="utf-8" />
+<meta name="viewport" content="width=device-width,initial-scale=1" />
+<title>Happy Photo Journey</title>
+<style>
+  *{box-sizing:border-box}
+  body{
+    margin:0;
+    font-family:'Poppins',sans-serif;
+    overflow:hidden;
+    height:100vh;
+    color:#fff;
+    background:url('Backg.jpg') center/cover no-repeat fixed, radial-gradient(circle at center,#6a00ff,#000);
+  }
+
+  header{
+    background:rgba(0,0,0,0.10);
+    color:#ffb3ff;
+    text-align:center;
+    padding:22px 10px;
+    font-weight:800;
+    letter-spacing:1.5px;
+    font-size:2rem;
+    text-shadow:0 0 20px #d38aff, 0 0 40px #ff99ff;
+    box-shadow:0 0 25px rgba(255,182,255,0.25);
+    position:relative;
+    z-index:30;
+  }
+
+  .slide{
+    position:absolute;
+    inset:0;
+    display:flex;
+    flex-direction:column;
+    justify-content:center;
+    align-items:center;
+    padding:60px 30px;
+    text-align:center;
+    opacity:0;
+    pointer-events:none;
+    transition:opacity .6s ease, transform .6s ease;
+    transform:translateY(10px);
+    backdrop-filter: blur(4px);
+    background:rgba(0,0,0,0.45);
+  }
+  .slide.active{
+    opacity:1;
+    pointer-events:all;
+    transform:translateY(0);
+  }
+
+  h2{
+    font-size:2.6rem;
+    color:#ff99ff;
+    margin:10px 0;
+    text-shadow:0 0 25px #d38aff, 0 0 50px #ff99ff;
+  }
+  p{
+    color:#ffe6ff;
+    margin:14px 0 36px;
+    font-size:1.3rem;
+    line-height:1.8;
+    max-width:1000px;
+    text-shadow:0 0 15px #c266ff;
+  }
+
+  .photo-grid{
+    display:flex;
+    gap:26px;
+    justify-content:center;
+    align-items:center;
+    flex-wrap:wrap;
+    margin-top:10px;
+  }
+
+  .photo-grid img{
+    width:280px;
+    height:280px;
+    object-fit:cover;
+    border-radius:16px;
+    border:4px solid #d38aff;
+    box-shadow:0 0 25px #d38aff, 0 0 60px #ff99ff;
+    background:#111;
+    transform:rotate(var(--angle,0deg));
+    transition:transform .35s, box-shadow .35s;
+  }
+  .photo-grid img:hover{
+    transform:scale(1.07) rotate(0deg);
+    box-shadow:0 0 45px #ff99ff, 0 0 80px #d38aff;
+  }
+
+  .divider{
+    height:8px;
+    width:70%;
+    margin:38px auto 16px;
+    background:linear-gradient(90deg,transparent,#d38aff,transparent);
+    border-radius:50%;
+    box-shadow:0 0 25px #ff99ff;
+  }
+
+  .nav-buttons{
+    position:absolute;
+    bottom:40px;
+    left:0;
+    right:0;
+    width:100%;
+    display:flex;
+    justify-content:space-between;
+    padding:0 50px;
+    z-index:40;
+  }
+  .nav-buttons button{
+    background:linear-gradient(90deg,#c266ff,#ff99ff);
+    color:#fff;
+    border:none;
+    padding:16px 34px;
+    border-radius:35px;
+    font-size:1.2rem;
+    font-weight:700;
+    cursor:pointer;
+    box-shadow:0 0 25px #ff99ff;
+    transition:transform .18s, box-shadow .2s;
+  }
+  .nav-buttons button:hover{
+    transform:scale(1.08);
+    box-shadow:0 0 40px #ffb3ff, 0 0 70px #d38aff;
+  }
+
+  @media (max-width:700px){
+    header{ font-size:1.4rem; }
+    h2{ font-size:1.8rem; }
+    p{ font-size:1rem; }
+    .photo-grid img{ width:180px; height:180px; }
+    .nav-buttons button{ font-size:1rem; padding:12px 24px; }
+    .nav-buttons{ padding:0 20px; }
+    .divider{ width:80%; }
+  }
+</style>
+</head>
+<body>
+  <header>💜 Happy Photo Journey 💗</header>
+
+  <!-- Slide 1 -->
+  <section id="slide1" class="slide active" aria-hidden="false">
+    <h2>Baby Memories</h2>
+    <p>These were the days of pure innocence and endless smiles. My baby years remind me of how far I’ve come from small giggles and simple joys to who I am today. Every laugh and every photo tells the story of where it all began my adorable beginning.</p>
+
+    <div class="photo-grid">
+      <img src="babyme.jpg" alt="Baby 1" style="--angle:-6deg">
+      <img src="pabebe.jpg" alt="Baby 2" style="--angle:6deg">
+    </div>
+
+    <div class="divider"></div>
+
+    <div class="nav-buttons">
+      <button id="backToM1">⬅ Back to Main</button>
+      <button id="toSlide2">Next ➜ High School</button>
+    </div>
+  </section>
+
+  <!-- Slide 2 -->
+  <section id="slide2" class="slide" aria-hidden="true">
+    <h2>High School Life</h2>
+    <p>These photos remind me of the fun days spent with people who made every challenge lighter and every day brighter. It was the time when we discovered who we were and who we wanted to become.</p>
+
+    <div class="photo-grid">
+      <img src="grade7.jpg" alt="grade7" style="--angle:-4deg">
+      <img src="grade8.jpg" alt="grade8" style="--angle:4deg">
+      <img src="graduation12.jpg" alt="graduation" style="--angle:-2deg">
+    </div>
+
+    <div class="divider"></div>
+
+    <div class="nav-buttons">
+      <button id="backTo1">⬅ Back to Baby Life</button>
+      <button id="toSlide3">Next ➜ College</button>
+      <button id="backToM2">⬅ Back to Main</button>
+    </div>
+  </section>
+
+  <!-- Slide 3 -->
+  <section id="slide3" class="slide" aria-hidden="true">
+    <h2>College Life</h2>
+    <p>College life opened a new chapter filled with dreams, hard work, and unforgettable bonds. It’s where lessons became experiences, and friends turned into family. These memories capture the joy, struggles, and growth that shaped the person I continue to become today.</p>
+
+    <div class="photo-grid">
+      <img src="college beshy forever.jpg" alt="college1" style="--angle:3deg">
+      <img src="nstp graduation.jpg" alt="college2" style="--angle:-3deg">
+      <img src="nstp gala.jpg" alt="college3" style="--angle:2deg">
+      <img src="cine fighting duks.jpg" alt="college4" style="--angle:-2deg">
+    </div>
+
+    <div class="divider"></div>
+
+    <div class="nav-buttons">
+      <button id="backTo2">⬅ Back to High School</button>
+      <button id="backToM3">⬅ Back to Main</button>
+    </div>
+  </section>
+
+<script>
+  const slides = Array.from(document.querySelectorAll('.slide'));
+  let current = 0, isTransitioning = false;
+
+  function goToIndex(i){
+    if(isTransitioning || i<0 || i>=slides.length || i===current) return;
+    isTransitioning = true;
+
+    slides.forEach((s,idx)=>{
+      if(idx===i){ s.classList.add('active'); s.setAttribute('aria-hidden','false'); }
+      else{ s.classList.remove('active'); s.setAttribute('aria-hidden','true'); }
+    });
+    current = i;
+    setTimeout(()=> isTransitioning=false,700);
+  }
+
+  document.getElementById('toSlide2').addEventListener('click', ()=>goToIndex(1));
+  document.getElementById('backTo1').addEventListener('click', ()=>goToIndex(0));
+  document.getElementById('toSlide3').addEventListener('click', ()=>goToIndex(2));
+  document.getElementById('backTo2').addEventListener('click', ()=>goToIndex(1));
+  document.getElementById('backToM1').addEventListener('click', ()=>window.location.href = '../../index.html');
+  document.getElementById('backToM2').addEventListener('click', ()=>window.location.href = '../../index.html');
+  document.getElementById('backToM3').addEventListener('click', ()=>window.location.href = '../../index.html');
+
+  window.addEventListener('keydown', e=>{
+    if(e.key==='ArrowRight') goToIndex(Math.min(current+1, slides.length-1));
+    if(e.key==='ArrowLeft') goToIndex(Math.max(current-1, 0));
+  });
+</script>
+</body>
+</html>
